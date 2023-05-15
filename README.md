@@ -1,4 +1,4 @@
 # number-guesser
-game to guess number
-your opponent is the computer
-You can guess number between 0 and 9 , the closest number to the answer which is random will be the wiiner
+game to guess number.
+Your opponent is the computer
+You can guess number between 0 and 9 , the first one to guess the number is the winner of the round.
