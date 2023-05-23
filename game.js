@@ -19,7 +19,7 @@ guessButton.addEventListener('click', () => {
   // Retrieve the player's guess
   const currentHumanGuess = humanGuessInput.value;
   // Make a random 'computer guess'
-  const computerGuess = Math.floor(Math.random() * 10);
+  const computerGuess = Math.floor(Math.random() * 5);
 
   // Display the computer guess and the target
   computerGuessDisplay.innerText = computerGuess;
@@ -84,10 +84,10 @@ subtractButton.addEventListener('click', () => {
 });
 
 const handleValueChange = value => {
-  if (value > 0 && value <= 9) {
+  if (value > 0 && value <= 5) {
     subtractButton.removeAttribute('disabled');
     addButton.removeAttribute('disabled');
-  } else if (value > 9) {
+  } else if (value > 5) {
     addButton.setAttribute('disabled', true);
   } else if (value <= 0) {
     subtractButton.setAttribute('disabled', true);
