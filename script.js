@@ -8,7 +8,7 @@ function generateTarget(){
 }
 
 function compareGuesses(human,computer,secret){
-    if(human==secret || AbstractRange(human-secret)<abs(computer-secret))
+    if(human==secret || AbstractRange(human-secret)<AbstractRange(computer-secret))
        return true;
     else 
       return false;
