@@ -51,49 +51,59 @@ guessButton.addEventListener('click', () => {
   nextRoundButton.removeAttribute('disabled');
 });
 
-nextRoundButton.addEventListener('click', () => {
-  // Increase the round number
-  advanceRound();
-  // Display the new round number
-  roundNumberDisplay.innerText = currentRoundNumber;
+if(currentRoundNumber<10){
+  nextRoundButton.addEventListener('click', () => {
+    // Increase the round number
+    advanceRound();
+    // Display the new round number
+    roundNumberDisplay.innerText = currentRoundNumber;
 
-  // Set the correct disabled state for the buttons
-  nextRoundButton.setAttribute('disabled', true);
-  guessButton.removeAttribute('disabled');
+    // Set the correct disabled state for the buttons
+    nextRoundButton.setAttribute('disabled', true);
+    guessButton.removeAttribute('disabled');
 
-  // Reset the guess input box and the target number display:
-  targetNumberDisplay.innerText = '?';
-  guessButton.innerText = 'Make a Guess';
-  humanGuessInput.value = '';
-  computerGuessDisplay.innerText = '?';
-  computerWinsDisplay.innerText = '';
-  guessButton.classList.remove('winning-text');
-});
+    // Reset the guess input box and the target number display:
+    targetNumberDisplay.innerText = '?';
+    guessButton.innerText = 'Make a Guess';
+    humanGuessInput.value = '';
+    computerGuessDisplay.innerText = '?';
+    computerWinsDisplay.innerText = '';
+    guessButton.classList.remove('winning-text');
+  });
 
-const addButton = document.getElementById('add');
-const subtractButton = document.getElementById('subtract');
+  const addButton = document.getElementById('add');
+  const subtractButton = document.getElementById('subtract');
 
-addButton.addEventListener('click', () => {
-  humanGuessInput.value = +humanGuessInput.value + 1;
-  handleValueChange(humanGuessInput.value);
-});
+  addButton.addEventListener('click', () => {
+    humanGuessInput.value = +humanGuessInput.value + 1;
+    handleValueChange(humanGuessInput.value);
+  });
 
-subtractButton.addEventListener('click', () => {
-  humanGuessInput.value = +humanGuessInput.value - 1;
-  handleValueChange(humanGuessInput.value);
-});
+  subtractButton.addEventListener('click', () => {
+    humanGuessInput.value = +humanGuessInput.value - 1;
+    handleValueChange(humanGuessInput.value);
+  });
 
-const handleValueChange = value => {
-  if (value > 0 && value <= 5) {
-    subtractButton.removeAttribute('disabled');
-    addButton.removeAttribute('disabled');
-  } else if (value > 5) {
-    addButton.setAttribute('disabled', true);
-  } else if (value <= 0) {
-    subtractButton.setAttribute('disabled', true);
+  const handleValueChange = value => {
+    if (value > 0 && value <= 5) {
+      subtractButton.removeAttribute('disabled');
+      addButton.removeAttribute('disabled');
+    } else if (value > 5) {
+      addButton.setAttribute('disabled', true);
+    } else if (value <= 0) {
+      subtractButton.setAttribute('disabled', true);
+    }
+  }
+
+  humanGuessInput.addEventListener('input', function(e) {
+    handleValueChange(e.target.value);
+  });
+}
+else{
+  if(humanScore>computerScore){
+    guessButton.innerText= 'You have deafeated the rise of machines';
+  }
+  else{
+    computerWinsDisplay.innerText='The machines have taken over the world';
   }
 }
-
-humanGuessInput.addEventListener('input', function(e) {
-  handleValueChange(e.target.value);
-});
