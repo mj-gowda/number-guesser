@@ -7,12 +7,11 @@ function generateTarget(){
     return Math.floor((Math.random())*5)
 }
 
-function compareGuesses(human,computer,secret){
-    if(human===secret){
-       return true;
-    }else{
-      return false;
-    }
+function compareGuesses(human, computer, secret) {
+  const humanDifference = Math.abs(human - secret);
+  const computerDifference = Math.abs(computer - secret);
+
+  return humanDifference <= computerDifference;
 }
 
 function updateScore(winner){
