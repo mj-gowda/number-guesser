@@ -8,11 +8,11 @@ function generateTarget(){
 }
 
 function compareGuesses(human,computer,secret){
-    if(human==secret || AbstractRange(human-secret)<abs(computer-secret))
+    if(human===secret){
        return true;
-    
-    else 
+    }else{
       return false;
+    }
 }
 
 function updateScore(winner){
