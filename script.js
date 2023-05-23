@@ -12,6 +12,7 @@ function compareGuesses(human,computer,secret){
        return true;
     else 
       return false;
+    }
 }
 
 function updateScore(winner){
